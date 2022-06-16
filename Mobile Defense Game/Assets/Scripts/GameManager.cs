@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public static GameManager instance { get; set; }
+
+    private void Awake()
+    {//start,update보다 먼저 실행이 된다. 즉 monoBehaviour를 상속받은 스크립트에 대해서 생성자와 같은 역활을 한다고 생각해도 된다.
+        if (instance == null)
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
     public Text seedText;
     public Text roundText;
     public Text roundStartText;
